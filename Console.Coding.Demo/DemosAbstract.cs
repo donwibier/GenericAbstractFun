@@ -21,12 +21,20 @@ namespace Console.Coding.Demo.Abstracts
 
 	}
 
+
+
+
+
+
+
+
+
 	public class Rectangle : Shape
 	{
 		public double Width { get; set; }
 		public double Height { get; set; }
 
-		public override double Area => Width*Height;
+		public override double Area => Width * Height;
 
 		public Rectangle(string shapeName, double width, double height) : base(shapeName)
 		{
@@ -45,7 +53,7 @@ namespace Console.Coding.Demo.Abstracts
 
 		public double Radius { get; set; }
 
-		public override double Area => Radius * Radius * System.Math.PI;
+		public override double Area => Radius * Radius * Math.PI;
 
 
 	}

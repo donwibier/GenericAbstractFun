@@ -1,0 +1,52 @@
+﻿@page
+@model DXWeb.RefactorDemo.Pages.CustomersModel
+
+<h2>Customers</h2>@(Html.DevExtreme().DataGrid<DXWeb.RefactorDemo.Models.EF.Customer>()
+	.DataSource(ds => ds.Mvc()
+		.Controller("Customer")
+		.LoadAction("Get")
+		.InsertAction("Post")
+		.UpdateAction("Put")
+		.DeleteAction("Delete")
+		.Key("CustomerId")
+	)
+	.RemoteOperations(true)
+	.Columns(columns => {
+
+		columns.AddFor(m => m.CustomerId);
+
+		columns.AddFor(m => m.FirstName);
+
+		columns.AddFor(m => m.LastName);
+
+		columns.AddFor(m => m.Company);
+
+		columns.AddFor(m => m.Address);
+
+		columns.AddFor(m => m.City);
+
+		columns.AddFor(m => m.State);
+
+		columns.AddFor(m => m.Country);
+
+		columns.AddFor(m => m.PostalCode);
+
+		columns.AddFor(m => m.Phone);
+
+		columns.AddFor(m => m.Fax);
+
+		columns.AddFor(m => m.Email);
+
+		columns.AddFor(m => m.SupportRepId).Lookup(lookup => lookup
+			.DataSource(ds => ds.WebApi().Controller("Customer").LoadAction("EmployeesLookup").Key("Value"))
+			.ValueExpr("Value")
+			.DisplayExpr("Text")
+		);
+	})
+	.Editing(e => e
+		.Mode(GridEditMode.Popup)
+		.AllowAdding(true)
+		.AllowUpdating(true)
+		.AllowDeleting(true)
+	)
+)
