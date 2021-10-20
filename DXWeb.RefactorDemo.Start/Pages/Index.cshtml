@@ -1,5 +1,45 @@
 @page
 
 
-<h2>Home</h2>
+<h2>Invoices</h2>
+@(Html.DevExtreme().DataGrid<DXWeb.RefactorDemo.Models.EF.Invoice>()
+    .DataSource(ds => ds.Mvc()
+        .Controller("Invoices")
+        .LoadAction("Get")
+        .InsertAction("Post")
+        .UpdateAction("Put")
+        .DeleteAction("Delete")
+        .Key("InvoiceId")
+    )
+    .RemoteOperations(true)
+    .Columns(columns => {
+
+        columns.AddFor(m => m.InvoiceId);
+
+        columns.AddFor(m => m.CustomerId).Lookup(lookup => lookup
+            .DataSource(ds => ds.WebApi().Controller("Invoices").LoadAction("CustomersLookup").Key("Value"))
+            .ValueExpr("Value")
+            .DisplayExpr("Text")
+        );
+
+        columns.AddFor(m => m.InvoiceDate);
+
+        columns.AddFor(m => m.BillingAddress);
+
+        columns.AddFor(m => m.BillingCity);
+
+        columns.AddFor(m => m.BillingState);
+
+        columns.AddFor(m => m.BillingCountry);
+
+        columns.AddFor(m => m.BillingPostalCode);
+
+        columns.AddFor(m => m.Total);
+    })
+    .Editing(e => e
+        .AllowAdding(true)
+        .AllowUpdating(true)
+        .AllowDeleting(true)
+    )
+)
 

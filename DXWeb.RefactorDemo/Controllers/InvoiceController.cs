@@ -44,6 +44,5 @@ namespace DXWeb.RefactorDemo.Controllers
 			var lookup = customerStore.Query<DTOCustomerLookup>();
 			return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
 		}
-
 	}
 }

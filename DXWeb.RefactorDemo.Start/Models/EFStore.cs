@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace DXWeb.RefactorDemo.Models
 {
-	//create_interface
+    //create_in 
 
-	public class EFResult
+    public class EFResult
 	{
 		public bool Success { get; set; }
 		public string Error { get; set; }
 	}
 
-	//create_efclass
-
-	}
+    //create_efclass 
+}

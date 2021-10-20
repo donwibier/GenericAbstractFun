@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console.Coding.Demo", "Cons
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DXWeb.RefactorDemo", "DXWeb.RefactorDemo\DXWeb.RefactorDemo.csproj", "{F250E321-EE87-46B4-AB46-E9224C1C3865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DXWeb.RefactorDemo.Start", "DXWeb.RefactorDemo.Start\DXWeb.RefactorDemo.Start.csproj", "{063D6C41-53D4-4B8F-971C-7D566CB0B6A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DXWeb.RefactorDemo.Start", "DXWeb.RefactorDemo.Start\DXWeb.RefactorDemo.Start.csproj", "{063D6C41-53D4-4B8F-971C-7D566CB0B6A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevExtreme NuGet.config", "DevExtreme NuGet.config", "{281E1B87-DC1A-4E20-8D6F-2CA5471A27C7}"
 	ProjectSection(SolutionItems) = preProject
