@@ -38,7 +38,7 @@
 		columns.AddFor(m => m.Email);
 
 		columns.AddFor(m => m.SupportRepId).Lookup(lookup => lookup
-			.DataSource(ds => ds.WebApi().Controller("Customer").LoadAction("EmployeesLookup").Key("Value"))
+			.DataSource(ds => ds.WebApi().Controller("Customer").LoadAction("EmployeeLookup").Key("Value"))
 			.ValueExpr("Value")
 			.DisplayExpr("Text")
 		);

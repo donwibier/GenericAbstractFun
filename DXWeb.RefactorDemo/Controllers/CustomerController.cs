@@ -19,10 +19,11 @@ namespace DXWeb.RefactorDemo.Controllers
 	[Route("api/[controller]/[action]")]
 	public class CustomerController : BaseController<int, DTOCustomer, CustomerStore>
 	{
-		public CustomerController(IDataStore<int, DTOCustomer> mainDataStore) : base(mainDataStore)
+        readonly IDataStore<int, DTOEmployee> employeeStore;
+        public CustomerController(IDataStore<int, DTOCustomer> mainDataStore, IDataStore<int, DTOEmployee> employeeStore) : base(mainDataStore)
 		{
-
-		}
+            this.employeeStore = employeeStore;
+        }
 
 		[HttpGet]
 		public async override Task<IActionResult> Get(DataSourceLoadOptions loadOptions)
@@ -46,6 +47,13 @@ namespace DXWeb.RefactorDemo.Controllers
 		public async override Task Delete(int key)
 		{
 			await base.Delete(key);
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> EmployeeLookup(DataSourceLoadOptions loadOptions)
+		{
+			var lookup = employeeStore.Query<DTOEmployeeLookup>();
+			return Json(await DataSourceLoader.LoadAsync(lookup, loadOptions));
 		}
 	}
 }

@@ -37,6 +37,7 @@ namespace DXWeb.RefactorDemo
 
 			services.AddScoped<IDataStore<int, DTOInvoice>, InvoiceStore>();
 			services.AddScoped<IDataStore<int, DTOCustomer>, CustomerStore>();
+			services.AddScoped<IDataStore<int, DTOEmployee>, EmployeeStore>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

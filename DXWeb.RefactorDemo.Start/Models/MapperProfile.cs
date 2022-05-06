@@ -26,13 +26,37 @@ namespace DXWeb.RefactorDemo.Models
 				.ReverseMap()
 					.ForMember(q => q.Customer, option => option.Ignore());
 			CreateMap<Customer, DTOCustomer>()
-				.ReverseMap();
+				.ReverseMap()
+						.ForMember(q => q.SupportRep, option => option.Ignore());
 			CreateMap<Customer, DTOCustomerLookup>()
 				.ForMember(d => d.Value, o => o.MapFrom(s => s.CustomerId))
 				.ForMember(d => d.Text,
 						opt => opt.MapFrom(src => string.IsNullOrWhiteSpace(src.Company)
 														? $"{src.LastName}, {src.FirstName}"
 														: src.Company));
+
+			CreateMap<Employee, DTOEmployeeLookup>()
+					.ForMember(d => d.Value, o => o.MapFrom(s => s.EmployeeId))
+					.ForMember(d => d.Text, o => o.MapFrom(s => $"{s.LastName}, {s.FirstName}"));
+
+			CreateMap<Employee, DTOEmployee>()
+					.ForMember(d => d.EmployeeId, o => o.MapFrom(s => s.EmployeeId))
+					.ForMember(d => d.LastName, o => o.MapFrom(s => s.LastName))
+					.ForMember(d => d.FirstName, o => o.MapFrom(s => s.FirstName))
+					.ForMember(d => d.Title, o => o.MapFrom(s => s.Title))
+					.ForMember(d => d.ReportsTo, o => o.MapFrom(s => s.ReportsTo))
+					.ForMember(d => d.BirthDate, o => o.MapFrom(s => s.BirthDate))
+					.ForMember(d => d.HireDate, o => o.MapFrom(s => s.HireDate))
+					.ForMember(d => d.Address, o => o.MapFrom(s => s.Address))
+					.ForMember(d => d.City, o => o.MapFrom(s => s.City))
+					.ForMember(d => d.State, o => o.MapFrom(s => s.State))
+					.ForMember(d => d.Country, o => o.MapFrom(s => s.Country))
+					.ForMember(d => d.PostalCode, o => o.MapFrom(s => s.PostalCode))
+					.ForMember(d => d.Phone, o => o.MapFrom(s => s.Phone))
+					.ForMember(d => d.Fax, o => o.MapFrom(s => s.Fax))
+					.ForMember(d => d.Email, o => o.MapFrom(s => s.Email));
+					
+
 			//CreateMap<InvoiceLine, DTOInvoiceLine>()
 			//	.ForMember(d => d.TrackName, o => o.MapFrom(s => s.Track.Name))
 			//	.ForMember(d => d.Composer, o => o.MapFrom(s => s.Track.Composer))
